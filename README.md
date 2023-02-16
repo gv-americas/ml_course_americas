@@ -28,16 +28,20 @@ These libraries can be installed using the pip package manager.
 # Usage
 To use this repository, simply clone it to your local machine or on google colaboratory.
 
-bash
+
 Copy code
 git clone https://github.com/gv-americas/ml_course_americas.git
 Then, navigate to the cloned repository and start the Jupyter notebook server:
 
-bash
-Copy code
-cd ml_course_americas
-jupyter notebook
-You can then open the course notebooks and follow along with the exercises.
+# Notebooks
+
+link1:
+
+link2:
+
+link3:
+
+link4:
 
 # Credits
 This course was developed by Geovariances Americas.
