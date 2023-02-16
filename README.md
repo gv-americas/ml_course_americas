@@ -39,6 +39,6 @@ cd ml_course_americas
 jupyter notebook
 You can then open the course notebooks and follow along with the exercises.
 
-Credits
+# Credits
 This course was developed by Geovariances Americas.
 
