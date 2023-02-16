@@ -35,9 +35,9 @@ Then, navigate to the cloned repository and start the Jupyter notebook server:
 
 # Notebooks
 
-link1:
+link1: https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P1_basics_python.ipynb
 
-link2:
+link2: 
 
 link3:
 
@@ -45,4 +45,7 @@ link4:
 
 # Credits
 This course was developed by Geovariances Americas.
+
+# Restrictions
+
 
