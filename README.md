@@ -56,11 +56,11 @@ P7_Supervised_Regression: https://colab.research.google.com/github/gv-americas/m
 # Credits
 This course was developed by Geovariances Americas.
 
-Gabriel MOREIRA
-João Pedro LAGUE
-Arthur ENDLEIN
-Roberto ROLO
-Danyel USERO
+**Gabriel MOREIRA**
+**João Pedro LAGUE**
+**Arthur ENDLEIN**
+**Roberto ROLO**
+**Danyel USERO**
 
 
 
