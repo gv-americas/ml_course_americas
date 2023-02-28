@@ -34,24 +34,21 @@ We also use a internal library for plotting, statistical analysis and machine le
 To use this repository, simply clone it to your local machine or on google colaboratory.
 
 # Copy code
-
+Clone the repository from GitHub:
+```bash
 git clone https://github.com/gv-americas/ml_course_americas.git
-
-We consider to use !%cd /content/ml_course_americas that allows you to import modules from repository.
+```
+We consider to use `!%cd /content/ml_course_americas` that allows you to import modules from repository.
 
 Then, navigate to the cloned repository and start the Jupyter notebook server.
 
 # Notebooks links with Google Colab
 
-P1_basics_python: https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P1_basics_python.ipynb
-
-P2_EDA: https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P2_EDA.ipynb#scrollTo=fczIB1RYHKvT 
-
-P3_Clustering: https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P3_Clustering.ipynb#scrollTo=MIxmskE0_LP2
-
-P6_Supervised_Class: https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P7_Supervised_Regression.ipynb#scrollTo=Sle6QTh685PW
-
-P7_Supervised_Regression: https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P7_Supervised_Regression.ipynb#scrollTo=Sle6QTh685PW
+- [Python basics: P1_basics_python](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P1_basics_python.ipynb)
+- [Exploratory Data Analysis: P2_EDA](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P2_EDA.ipynb#scrollTo=fczIB1RYHKvT)
+- [Clustering: P3_Clustering](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P3_Clustering.ipynb#scrollTo=MIxmskE0_LP2)
+- [Classification: P6_Supervised_Class](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P7_Supervised_Regression.ipynb#scrollTo=Sle6QTh685PW)
+- [Regression: P7_Supervised_Regression](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P7_Supervised_Regression.ipynb#scrollTo=Sle6QTh685PW)
 
 # Credits
 This course was developed by Geovariances Americas.
