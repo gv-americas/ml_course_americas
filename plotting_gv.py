@@ -45,7 +45,8 @@ def cat1_in_cat2(cat1, cat2, title):
 
     #plt.savefig(outfl, bbox_inches='tight', facecolor='white')
 
-def elbow_plot(kmin, kmax, vars_std):
+def elbow_plot(kmin, kmax, vars_std, title='N Clusters x Inercia'):
+    from sklearn.cluster import KMeans
 
     n_clus = np.arange(kmin, kmax, 1)
 
@@ -59,25 +60,26 @@ def elbow_plot(kmin, kmax, vars_std):
 
     fig, ax = plt.subplots(figsize=(14,10))
 
-    ax.plot(n_clusters, inercia, marker='o', color='blue', label='K - Clusters')
+    ax.plot(n_clusters, inercia, marker='o', label='K - Clusters')
     ax.set(
 
     xlabel='N Clusters',
-    ylabel='Inércia',
-    title='N Clusters x Inercia'
+    ylabel='Inertia',
+    title=title
     )
-    #ax.grid(visible=True, linestyle='--')
+    ax.grid(visible=True, linestyle='--')
     ax.set_xticks(n_clusters)
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
     ax.set_facecolor('white')
     ax.legend(loc='upper right', frameon=False, fontsize=12, markerscale=2)
     plt.show()
 
-def dendogram(vars, method='ward', metric='euclidean'):
+def dendogram(vars, method='ward', metric='euclidean', color_threshold=55):
+    
     z = linkage(vars, method='ward', metric='euclidean')
     plt.figure(figsize=(15,8))
-    ddg = dendrogram(z, no_labels=True, color_threshold=15)
+    plt.ylabel('Distance')
+    plt.xlabel('All observations')
+    ddg = dendrogram(z, no_labels=True, color_threshold=color_threshold)
 
 def cluster_metrics(n_clus, metric1,metric2,metric3, metric4):
 
