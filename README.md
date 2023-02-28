@@ -18,20 +18,23 @@ The course includes a series of practical exercises that utilize a multivariate-
 # Installation
 To get started with the course exercises, you will need to install Python 3 and the following libraries:
 
-NumPy
-Pandas
-Matplotlib
-Seaborn
-Scikit-learn
-These libraries can be installed using the pip package manager.
+- NumPy
+- Pandas
+- Matplotlib
+- Seaborn
+- Scikit-learn
+These libraries can be installed using the `pip` package manager. Or you can download them from the `requirements.txt` file using the command:
+```
+pip3 install -r requirements.txt
+```
 
 We also use a internal library for plotting, statistical analysis and machine learning developed by Geovariances Americas:
 
-*   plotting_gv will be called in this course to make all the routines faster and easier to implement.
+*   `plotting_gv` will be called in this course to make all the routines faster and easier to implement.
 
 
 # Usage
-To use this repository, simply clone it to your local machine or on google colaboratory.
+To use this repository, simply clone it to your local machine or on Google Colaboratory.
 
 # Copy code
 Clone the repository from GitHub:
