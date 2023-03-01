@@ -46,8 +46,11 @@ You can clone the GitHub repository:
 git clone https://github.com/gv-americas/ml_course_americas.git
 ```
 
-We consider to use `!%cd /content/ml_course_americas` that allows you to import modules from repository.
-Then, navigate to the cloned repository and start the Jupyter notebook server.
+We consider to use !curl command that downloads the repository data used for the course. If you are on Google Colaboratory session, you will also need to download the plotting scripts from Geovariances.
+
+!curl -o phosphate_assay_sampled_geomet.csv https://raw.githubusercontent.com/gv-americas/ml_course_americas/main/phosphate_assay_sampled_geomet.csv
+
+!curl -o plotting_gv.py https://raw.githubusercontent.com/gv-americas/ml_course_americas/main/plotting_gv.py
 
 ## Notebooks links with Google Colab
 
