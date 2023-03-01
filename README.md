@@ -39,15 +39,13 @@ We also use a internal library for plotting, statistical analysis and machine le
 To use this repository, simply clone it to your local machine or on Google Colaboratory.
 
 ## Copy code
-
-Clone the repository from GitHub:
+You can clone the GitHub repository:
 
 ```bash
 git clone https://github.com/gv-americas/ml_course_americas.git
 ```
 
 We consider to use `!%cd /content/ml_course_americas` that allows you to import modules from repository.
-
 Then, navigate to the cloned repository and start the Jupyter notebook server.
 
 ## Notebooks links with Google Colab
