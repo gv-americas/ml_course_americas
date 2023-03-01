@@ -71,3 +71,4 @@ This course was developed by Geovariances Americas.
 **Arthur ENDLEIN**
 **Roberto ROLO**
 **Danyel USERO**
+**Gustavo SCHOLZE**
