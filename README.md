@@ -24,6 +24,7 @@ To get started with the course exercises, you will need to install Python 3 and 
 - Matplotlib
 - Seaborn
 - Scikit-learn
+
 These libraries can be installed using the `pip` package manager. Or you can download them from the `requirements.txt` file using the command:
 
 ```
