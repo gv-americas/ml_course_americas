@@ -62,7 +62,7 @@ def cat1_in_cat2(cat1, cat2, title):
     plt.xticks(x_ticks, x_labels, rotation="vertical")
     plt.ylabel("# samples")
     plt.title(title)
-    plt.grid(axis='x')
+    plt.grid(axis="x")
     plt.legend()
 
     # plt.savefig(outfl, bbox_inches='tight', facecolor='white')
@@ -87,8 +87,7 @@ def elbow_plot(kmin, kmax, vars_std, title="N Clusters x Inercia"):
     ax.set(xlabel="Number of clusters", ylabel="Inertia", title=title)
     ax.set_xticks(n_clusters)
     ax.set_facecolor("white")
-    ax.legend(loc="upper right", frameon=False,
-               fontsize=12, markerscale=2)
+    ax.legend(loc="upper right", frameon=False, fontsize=12, markerscale=2)
     plt.show()
 
 
@@ -147,10 +146,14 @@ def locmap(x, y, v, cat, figsize, title):
         catcmap = plt.cm.get_cmap("viridis", ncats)  # Creating our own colormap
 
         # Plotting
-        scatvu = ax.scatter(x, y, c=catnum,
-                             cmap=catcmap,
-                               vmin=vlim[0], vmax=vlim[1],
-                               )
+        scatvu = ax.scatter(
+            x,
+            y,
+            c=catnum,
+            cmap=catcmap,
+            vmin=vlim[0],
+            vmax=vlim[1],
+        )
 
         # definindo escala de cores
         ticks_location = np.arange(ncats) + 0.5
@@ -170,11 +173,9 @@ def locmap(x, y, v, cat, figsize, title):
 
     else:
         cont_cmap = plt.get_cmap("viridis")
-        norm= matplotlib.colors.Normalize(vmin=v.min(),
-                                           vmax=v.max())
+        norm = matplotlib.colors.Normalize(vmin=v.min(), vmax=v.max())
 
-        scatvu = ax.scatter(x, y, c=v, cmap=cont_cmap,
-                            vmin=v.min(), vmax=v.max())
+        scatvu = ax.scatter(x, y, c=v, cmap=cont_cmap, vmin=v.min(), vmax=v.max())
 
         # definindo escala de cores
         cax = fig.add_axes(
@@ -185,9 +186,7 @@ def locmap(x, y, v, cat, figsize, title):
                 ax.get_position().height,
             ]
         )
-        fig.colorbar(scatvu, cax=cax, label="Teor",
-                     norm=norm)
-        
+        fig.colorbar(scatvu, cax=cax, label="Teor", norm=norm)
 
     # salvando
     # plt.savefig(outfl, bbox_inches='tight', facecolor='white', dpi=300)
@@ -353,7 +352,7 @@ def validate_regression(pred, test, title):
     axs[1].grid(True)
 
     axs[2].scatter(true, bias, color="black")
-    axs[2].grid()
+    axs[2].grid(True)
     axs[2].set_ylabel("Error")
     axs[2].set_xlabel("Grade")
     axs[2].axhline(0, color="red")
@@ -379,15 +378,17 @@ def features_importance(model, X_test, varnames, y_test, clf=True):
     forest_importances.sort_values(ascending=False).plot.bar(yerr=std, ax=axs[0])
     axs[0].set_title("Feature importances using mean decrease")
     axs[0].set_ylabel("Mean decrease")
-    axs[0].grid(axis='x')
+    axs[0].grid(axis="x")
 
     result = permutation_importance(model, X_test, y_test, scoring=metric, n_repeats=10)
     forest_importances = pd.Series(result.importances_mean, index=varnames)
 
-    forest_importances.sort_values(ascending=False).plot.bar(yerr=result.importances_std, ax=axs[1])
+    forest_importances.sort_values(ascending=False).plot.bar(
+        yerr=result.importances_std, ax=axs[1]
+    )
     axs[1].set_title("Feature importances using permutation")
     axs[1].set_ylabel("{} decrease".format(metric))
-    axs[1].grid(axis='x')
+    axs[1].grid(axis="x")
 
     fig.tight_layout()
     # fig.savefig(outfl, facecolor='white')
@@ -627,9 +628,7 @@ def flag_outliers(df, column, iqr_distance=1.5, remove_outliers=False):
     return df
 
 
-def tdscatter(
-    x, y, z, c, zex=0.5, figsize=(10, 30), title="", s=2, elev=30, azim=60
-):
+def tdscatter(x, y, z, c, zex=0.5, figsize=(10, 30), title="", s=2, elev=30, azim=60):
     # Obtenha o número de categorias em "c"
     cat_to_num = {cat: num for num, cat in enumerate(np.unique(c))}
 
