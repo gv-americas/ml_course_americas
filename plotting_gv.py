@@ -247,7 +247,7 @@ def scatterplot(df, x_col, y_col, c=None, title=None, lineregress=True):
 def histogram(
     var,
     bins=20,
-    color="green",
+    color="#116981",
     title="Histogram",
     labely="Frequência",
     labelx="Teor",
