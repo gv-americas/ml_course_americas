@@ -170,9 +170,9 @@ def locmap(x, y, v, cat, secex, figsize, title):
 
     else:
         cont_cmap = plt.get_cmap("viridis")
-        norm = matplotlib.colors.Normalize(vmin=v.min(), vmax=v.max())
+        #norm = matplotlib.colors.Normalize(vmin=v.min(), vmax=v.max())
 
-        scatvu = ax.scatter(x, y, c=v, cmap=cont_cmap, vmin=v.min(), vmax=v.max())
+        scatvu = ax.scatter(x, y, c=v, cmap=cont_cmap)
 
         # definindo escala de cores
         cax = fig.add_axes(
@@ -183,7 +183,7 @@ def locmap(x, y, v, cat, secex, figsize, title):
                 ax.get_position().height,
             ]
         )
-        fig.colorbar(scatvu, cax=cax, label="Grades", norm=norm)
+        fig.colorbar(scatvu, cax=cax, label="Grades")
 
     # salvando
     # plt.savefig(outfl, bbox_inches='tight', facecolor='white', dpi=300)
