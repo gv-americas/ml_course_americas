@@ -81,13 +81,12 @@ def elbow_plot(kmin, kmax, vars_std, title="N Clusters x Inercia"):
         n_clusters.append(i)
         inercia.append(kmeans.inertia_)
 
-    fig, ax = plt.subplots(figsize=(6, 6))
+    fig, ax = plt.subplots(figsize=(8, 5))
 
     ax.plot(n_clusters, inercia, marker="o", label="K-Clusters")
     ax.set(xlabel="Number of clusters", ylabel="Inertia", title=title)
     ax.set_xticks(n_clusters)
-    ax.set_facecolor("white")
-    ax.legend(loc="upper right", frameon=False, fontsize=12, markerscale=2)
+    ax.legend(loc="upper right")
     plt.show()
 
 
@@ -104,12 +103,11 @@ def cluster_metrics(n_clus, metric1, metric2, metric3, metric4):
 
     axs[0].set_ylabel("Sillhouete Score")
     axs[0].set_xlabel("N clusters")
-    axs[0].plot(n_clus, metric1, label="KMeans", marker="o", markersize=5)
-    axs[0].plot(n_clus, metric2, label="Agglomerative", marker="o", markersize=5)
+    axs[0].plot(n_clus, metric1, label="KMeans", marker="o")
+    axs[0].plot(n_clus, metric2, label="Agglomerative", marker="o")
     axs[0].set_title(
         "Values close to zero indicate overlapping groups\nHigher values indicate better results."
     )
-    axs[0].grid()
     axs[0].legend()
     axs[0].set_xticks(np.arange(1, len(n_clus) + 1, 1))
 
@@ -117,21 +115,20 @@ def cluster_metrics(n_clus, metric1, metric2, metric3, metric4):
     axs[1].set_ylabel("Davies-Bouldin")
     axs[1].set_xlabel("N clusters")
     axs[1].set_title("Values close to zero indicate better results")
-    axs[1].plot(n_clus, metric3, label="KMeans", marker="o", markersize=5)
-    axs[1].plot(n_clus, metric4, label="Agglomerative", marker="o", markersize=5)
-    axs[1].grid()
+    axs[1].plot(n_clus, metric3, label="KMeans", marker="o")
+    axs[1].plot(n_clus, metric4, label="Agglomerative", marker="o")
     axs[1].legend()
 
 
-def locmap(x, y, v, cat, figsize, title):
+def locmap(x, y, v, cat, secex, figsize, title):
     # criando a figura e os axis
     fig, ax = plt.subplots(figsize=figsize)
 
     # configurando o plot
     ax.set(title=title, xlabel="X (m)", ylabel="Y (m)", aspect="equal")
 
-    ax.minorticks_on()
-    ax.grid(which="major")
+    if secex > 1:
+        y = y*secex
 
     # verificando se a variavel e categorica
     if cat:
@@ -143,7 +140,7 @@ def locmap(x, y, v, cat, figsize, title):
         catnum = v.map(catdic)
         vlim = (0, ncats)
 
-        catcmap = plt.cm.get_cmap("viridis", ncats)  # Creating our own colormap
+        catcmap = plt.cm.get_cmap("Set1", ncats)  # Creating our own colormap
 
         # Plotting
         scatvu = ax.scatter(
@@ -166,7 +163,7 @@ def locmap(x, y, v, cat, figsize, title):
                 ax.get_position().height,
             ]
         )
-        cbar = plt.colorbar(scatvu, cax=cax, label="Teor")
+        cbar = plt.colorbar(scatvu, cax=cax, label="Category")
         ticks_location = np.arange(ncats) + 0.5
         cbar.set_ticks(ticks_location)
         cbar.set_ticklabels(cat_labels)
@@ -186,7 +183,7 @@ def locmap(x, y, v, cat, figsize, title):
                 ax.get_position().height,
             ]
         )
-        fig.colorbar(scatvu, cax=cax, label="Teor", norm=norm)
+        fig.colorbar(scatvu, cax=cax, label="Grades", norm=norm)
 
     # salvando
     # plt.savefig(outfl, bbox_inches='tight', facecolor='white', dpi=300)
@@ -244,8 +241,6 @@ def scatterplot(df, x_col, y_col, c=None, title=None, lineregress=True):
         ax.plot(x_d, y_r, color="black", linestyle="--", label="Regression line")
         ax.legend()
 
-    ax.minorticks_on()
-    ax.grid(which="major")
     plt.show()
 
 
@@ -280,8 +275,6 @@ def histogram(
             ylabel=labely,
             xlabel=labelx,
         )
-
-        plt.grid(linestyle="--")
 
         plt.show()
 
@@ -323,11 +316,10 @@ def validate_regression(pred, test, title):
     axs[0].scatter(estimated, true, c="black")
     axs[0].set_ylim([min_val, max_val])
     axs[0].set_xlim([min_val, max_val])
-    axs[0].grid(True)
     axs[0].set_ylabel("True")
     axs[0].set_xlabel("Estimated")
 
-    axs[1].hist(bias, bins=20, color="green")
+    axs[1].hist(bias, bins=20, color="#116981")
     statsvals = """
     Mean: {}
     Std: {}
@@ -349,10 +341,8 @@ def validate_regression(pred, test, title):
     )
 
     axs[1].annotate(statsvals, xy=(0.6, 0.5), xycoords="axes fraction", color="black")
-    axs[1].grid(True)
 
     axs[2].scatter(true, bias, color="black")
-    axs[2].grid(True)
     axs[2].set_ylabel("Error")
     axs[2].set_xlabel("Grade")
     axs[2].axhline(0, color="red")
@@ -375,7 +365,7 @@ def features_importance(model, X_test, varnames, y_test, clf=True):
     importances = model.feature_importances_
     std = np.std([tree.feature_importances_ for tree in model.estimators_], axis=0)
     forest_importances = pd.Series(importances, index=varnames)
-    forest_importances.sort_values(ascending=False).plot.bar(yerr=std, ax=axs[0])
+    forest_importances.sort_values(ascending=False).plot.bar(yerr=std, ax=axs[0], color="#116981")
     axs[0].set_title("Feature importances using mean decrease")
     axs[0].set_ylabel("Mean decrease")
     axs[0].grid(axis="x")
@@ -384,7 +374,7 @@ def features_importance(model, X_test, varnames, y_test, clf=True):
     forest_importances = pd.Series(result.importances_mean, index=varnames)
 
     forest_importances.sort_values(ascending=False).plot.bar(
-        yerr=result.importances_std, ax=axs[1]
+        yerr=result.importances_std, ax=axs[1], color="#116981"
     )
     axs[1].set_title("Feature importances using permutation")
     axs[1].set_ylabel("{} decrease".format(metric))
@@ -490,7 +480,7 @@ def correlation_matrix(df, fsize, method="pearson"):
     # plt.savefig(outfl, bbox_inches='tight', facecolor='white')
 
 
-def boxplots(df, vars_names_array, cat, title="", cmap="viridis"):
+def boxplots(df, vars_names_array, cat, title="", cmap="Set1"):
     n_var = len(vars_names_array)
     n_lines = math.ceil(n_var / 3)
     fig, axs = plt.subplots(n_lines, 3, figsize=(10, 10))
@@ -563,7 +553,7 @@ def scatter_matrix(df, figsize=(30, 30), nmax=None, cat=None):
     for i, j in zip(*np.triu_indices_from(axes, k=1)):
         for x, y in [(i, j), (j, i)]:
             sctt(data[x], data[y], axes[x, y], cat)
-            axes[x, y].grid()
+            axes[x, y].grid(linestyle='--')
             axes[x, y].set_xlabel(vars_name[x])
             axes[x, y].set_ylabel(vars_name[y])
         if i < j:
@@ -572,6 +562,7 @@ def scatter_matrix(df, figsize=(30, 30), nmax=None, cat=None):
     for i, label in enumerate(vars_name):
         axes[i, i].hist(data[i], color="#116981")
         axes[i, i].set_title(label)
+        axes[i, i].grid(linestyle='--')
     plt.tight_layout()
 
 
@@ -582,7 +573,7 @@ def evaluate_kfolds(
     n_repeats,
     model,
     clf=True,
-    figsize=(14, 12),
+    figsize=(20, 10),
     regscore="r2",
     classcore="balanced_accuracy",
 ):
@@ -604,6 +595,7 @@ def evaluate_kfolds(
     ax.set_ylabel(f"{scoring} score")
     ax.boxplot(np.array(scores).reshape(n_repeats, n_folds), showmeans=True)
     ax.legend([f"{n_repeats} Repeats, {n_folds} Folds"])
+    ax.grid(axis='x')
     plt.show()
 
 
@@ -628,50 +620,46 @@ def flag_outliers(df, column, iqr_distance=1.5, remove_outliers=False):
     return df
 
 
-def tdscatter(x, y, z, c, zex=0.5, figsize=(10, 30), title="", s=2, elev=30, azim=60):
-    # Obtenha o número de categorias em "c"
-    cat_to_num = {cat: num for num, cat in enumerate(np.unique(c))}
-
-    c_num = c.map(cat_to_num)
-    k = len(np.unique(c))
-    cats = np.unique(c)
-
-    # Defina a paleta de cores
-    cmap = plt.cm.get_cmap("viridis", k)
-
-    # Defina os locais dos marcadores de tick na barra de cores
-    ticks_location = np.arange(k)
-
-    # Crie o gráfico de dispersão tridimensional
+def tdscatter(x, y, z, c, cat=False, zex=0.5, figsize=(10, 30), title="", s=2, elev=30, azim=60):
     fig = plt.figure(figsize=figsize)
     ax = fig.add_subplot(111, projection="3d")
     ax.set_box_aspect((np.ptp(x), np.ptp(y), zex * np.ptp(z)))
-    ts = ax.scatter(x, y, z, c=c_num, s=s, cmap=cmap)
+
+    cax = fig.add_axes(
+    [
+        ax.get_position().x1 + 0.2,
+        ax.get_position().y0,
+        0.02,
+        ax.get_position().height,
+    ]
+    )
+
+    if cat:
+        cat_labels = np.unique(c)
+        cat_to_num = {cat: num for num, cat in enumerate(np.unique(c))}
+        c_num = c.map(cat_to_num)
+        k = len(np.unique(c))
+        vlim = (0, k)
+        catcmap = plt.cm.get_cmap("Set1", k)  # Creating our own colormap
+
+        ts = ax.scatter(x, y, z, c=c_num, s=s, cmap=catcmap, vmin=vlim[0], vmax=vlim[1])
+
+        ticks_location = np.arange(k) + 0.5
+
+
+        cbar = plt.colorbar(ts, cax=cax, label="Category")
+        ticks_location = np.arange(k) + 0.5
+        cbar.set_ticks(ticks_location)
+        cbar.set_ticklabels(cat_labels)
+
+    else:
+        ts = ax.scatter(x, y, z, c=c, s=s, cmap='viridis')
+        cbar = plt.colorbar(ts, cax=cax, label="Grades")
+
     ax.set_xlabel("Easting (m)")
     ax.set_ylabel("Northing (m)")
     ax.set_zlabel("Elevation (m)")
     ax.set_title(title)
-
-    ax.view_init(elev=elev, azim=azim)
-    # Adicione a barra de cores ao gráfico
-    cax = fig.add_axes(
-        [
-            ax.get_position().x1 + 0.05,
-            ax.get_position().y0,
-            0.02,
-            ax.get_position().height,
-        ]
-    )
-    cbar = plt.colorbar(ts, cax=cax, ticks=ticks_location)
-    cbar.set_ticklabels(np.unique(c))
-
-    # Posicione a caixa delimitadora do eixo da legenda fora do gráfico
-    cax_pos = cax.get_position()
-    cax.set_position([cax_pos.x0 + 0.2, cax_pos.y0, cax_pos.width, cax_pos.height])
-    cbar.set_ticks(ticks_location)
-    cbar.set_ticklabels(cats)
-    fig.subplots_adjust(right=1)
-    fig.subplots_adjust(wspace=0.5)
 
 
 def count_cat(cat, **kwargs):
