@@ -384,11 +384,6 @@ def features_importance(model, X_test, varnames, y_test, clf=True):
     # fig.savefig(outfl, facecolor='white')
 
 
-import math
-import numpy as np
-import matplotlib.pyplot as plt
-
-
 def discrete_cmap(N, base_cmap="jet"):
     """Create an N-bin discrete colormap from the specified input map"""
 
