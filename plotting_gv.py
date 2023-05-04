@@ -354,33 +354,48 @@ def validate_regression(pred, test, title):
     # plt.savefig(outfl, facecolor='white', bbox_inches='tight')
 
 
-def features_importance(model, X_test, varnames, y_test, clf=True):
+def features_importance(model, X_test, varnames, y_test, clf=True, rf=True):
     if clf == True:
         metric = "accuracy"
     else:
         metric = "neg_mean_squared_error"
 
-    fig, axs = plt.subplots(2, 1, figsize=(15, 8))
+    if rf:
 
-    importances = model.feature_importances_
-    std = np.std([tree.feature_importances_ for tree in model.estimators_], axis=0)
-    forest_importances = pd.Series(importances, index=varnames)
-    forest_importances.sort_values(ascending=False).plot.bar(yerr=std, ax=axs[0], color="#116981")
-    axs[0].set_title("Feature importances using mean decrease")
-    axs[0].set_ylabel("Mean decrease")
-    axs[0].grid(axis="x")
+        fig, axs = plt.subplots(2, 1, figsize=(8, 10))
 
-    result = permutation_importance(model, X_test, y_test, scoring=metric, n_repeats=10)
-    forest_importances = pd.Series(result.importances_mean, index=varnames)
+        importances = model.feature_importances_
+        std = np.std([tree.feature_importances_ for tree in model.estimators_], axis=0)
+        forest_importances = pd.Series(importances, index=varnames)
+        forest_importances.sort_values(ascending=False).plot.bar(yerr=std, ax=axs[0], color="#116981")
+        axs[0].set_title("Feature importances using mean decrease")
+        axs[0].set_ylabel("Mean decrease")
+        axs[0].grid(axis="x")
 
-    forest_importances.sort_values(ascending=False).plot.bar(
-        yerr=result.importances_std, ax=axs[1], color="#116981"
-    )
-    axs[1].set_title("Feature importances using permutation")
-    axs[1].set_ylabel("{} decrease".format(metric))
-    axs[1].grid(axis="x")
+        result = permutation_importance(model, X_test, y_test, scoring=metric, n_repeats=10)
+        forest_importances = pd.Series(result.importances_mean, index=varnames)
 
-    fig.tight_layout()
+        forest_importances.sort_values(ascending=False).plot.bar(
+            yerr=result.importances_std, ax=axs[1], color="#116981"
+        )
+        axs[1].set_title("Feature importances using permutation")
+        axs[1].set_ylabel("{} decrease".format(metric))
+        axs[1].grid(axis="x")
+
+        fig.tight_layout()
+    else:
+        fig, axs = plt.subplots(1, 1, figsize=(8, 5))
+        result = permutation_importance(model, X_test, y_test, scoring=metric, n_repeats=10)
+        forest_importances = pd.Series(result.importances_mean, index=varnames)
+
+        forest_importances.sort_values(ascending=False).plot.bar(
+            yerr=result.importances_std, ax=axs, color="#116981"
+        )
+        axs.set_title("Feature importances using permutation")
+        axs.set_ylabel("{} decrease".format(metric))
+        axs.grid(axis="x")
+
+        fig.tight_layout()
     # fig.savefig(outfl, facecolor='white')
 
 
