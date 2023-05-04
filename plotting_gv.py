@@ -358,7 +358,7 @@ def features_importance(model, X_test, varnames, y_test, clf=True):
     if clf == True:
         metric = "accuracy"
     else:
-        metric = "mean_squared_error"
+        metric = "neg_mean_squared_error"
 
     fig, axs = plt.subplots(2, 1, figsize=(15, 8))
 
