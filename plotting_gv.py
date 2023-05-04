@@ -342,9 +342,9 @@ def validate_regression(pred, test, title):
 
     axs[1].annotate(statsvals, xy=(0.6, 0.5), xycoords="axes fraction", color="black")
 
-    axs[2].scatter(true, bias, color="black")
+    axs[2].scatter(estimated, bias, color="black")
     axs[2].set_ylabel("Error")
-    axs[2].set_xlabel("Grade")
+    axs[2].set_xlabel("Estimated Grade")
     axs[2].axhline(0, color="red")
 
     # saving
@@ -358,7 +358,7 @@ def features_importance(model, X_test, varnames, y_test, clf=True):
     if clf == True:
         metric = "accuracy"
     else:
-        metric = "r2"
+        metric = "mean_squared_error"
 
     fig, axs = plt.subplots(2, 1, figsize=(15, 8))
 
