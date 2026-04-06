@@ -1,74 +1,57 @@
 # Geovariances Machine Learning Course
 
-Welcome to the Geovariances Machine Learning Course! This is a comprehensive course that covers a range of topics in machine learning, including Python, data preprocessing, exploratory data analysis, data transformations, and both supervised and unsupervised learning.
+Welcome to the **Geovariances Machine Learning Course**.  
+This course provides a structured introduction to machine learning, covering:
 
-## Course Overview
+- Python fundamentals  
+- Data preprocessing  
+- Exploratory data analysis (EDA)  
+- Data transformations  
+- Supervised and unsupervised learning  
 
-In this course, you will learn how to develop and implement machine learning algorithms using Python. We will begin with a brief introduction to Python and its data science libraries, followed by an overview of the machine learning process, from data preprocessing to model evaluation. We will then dive into specific machine learning topics, including:
+All notebooks can be executed directly in the cloud using **Google Colab**.
 
-- Data preprocessing techniques such as feature scaling and one-hot encoding
-- Exploratory data analysis using data visualization techniques
-- Unsupervised learning methods such as clustering and dimensionality reduction
-- Supervised learning methods such as regression and classification
+---
 
-## Dataset
+## 🚀 How to use
 
-The course includes a series of practical exercises that utilize a multivariate-scale drilling dataset with geochemical and geometallurgical variables. The dataset is provided by Geovariances and is used to demonstrate the application of machine learning concepts in real-world scenarios.
+Click on any notebook below to open it in Google Colab.  
+No local installation is required.
 
-## Installation
+---
 
-To get started with the course exercises, you will need to install Python 3 and the following libraries:
+## 📁 01 — Python Basics
 
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-- Scikit-learn
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/01_Basics/02_Jupyter_Notebooks.ipynb) Jupyter Notebooks  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/01_Basics/03_Variables_and_Operations.ipynb) Variables and Operations  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/01_Basics/04_Collections.ipynb) Collections  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/01_Basics/05_Flux_Control.ipynb) Control Flow  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/01_Basics/06_Functions.ipynb) Functions  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/01_Basics/07_Classes.ipynb) Classes  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/01_Basics/08_IO.ipynb) Input / Output  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/01_Basics/09_Packages.ipynb) Packages  
 
-These libraries can be installed using the `pip` package manager. Or you can download them from the `requirements.txt` file using the command:
+---
 
-```
-pip3 install -r requirements.txt
-```
+## 📁 02 — Scientific Python Stack
 
-We also use a internal library for plotting, statistical analysis and machine learning developed by Geovariances Americas:
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/02_Packages/01_Numpy.ipynb) NumPy  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/02_Packages/02_Pandas.ipynb) Pandas  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/02_Packages/03_Matplotlib.ipynb) Matplotlib  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/02_Packages/04_SciPy.ipynb) SciPy  
+- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/02_Packages/05_Sklearn.ipynb) Scikit-learn  
 
-- `plotting_gv` will be called in this course to make all the routines faster and easier to implement.
+---
 
-# Usage
+## 👥 Credits
 
-To use this repository, simply clone it to your local machine or on Google Colaboratory.
+This course was developed by **Geovariances Americas**:
 
-## Copy code
-You can clone the GitHub repository:
+- Gabriel MOREIRA  
+- João Pedro LAGUE  
+- Arthur ENDLEIN  
+- Roberto ROLO  
+- Danyel USERO  
+- Gustavo SCHOLZE  
 
-```bash
-git clone https://github.com/gv-americas/ml_course_americas.git
-```
-
-We consider to use !curl command that downloads the repository data used for the course. If you are on Google Colaboratory session, you will also need to download the plotting scripts from Geovariances.
-
-!curl -o phosphate_assay_sampled_geomet.csv https://raw.githubusercontent.com/gv-americas/ml_course_americas/main/phosphate_assay_sampled_geomet.csv
-
-!curl -o plotting_gv.py https://raw.githubusercontent.com/gv-americas/ml_course_americas/main/plotting_gv.py
-
-## Notebooks links with Google Colab
-
-- [Python basics](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P1_basics_python.ipynb)
-- [Exploratory Data Analysis](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P2_EDA.ipynb#scrollTo=fczIB1RYHKvT)
-- [Clustering](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P3_Clustering.ipynb#scrollTo=MIxmskE0_LP2)
-- [Supervised classification](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P7_Supervised_Regression.ipynb#scrollTo=Sle6QTh685PW)
-- [Supervised regression](https://colab.research.google.com/github/gv-americas/ml_course_americas/blob/main/P7_Supervised_Regression.ipynb#scrollTo=Sle6QTh685PW)
-
-***
-
-## Credits
-
-This course was developed by Geovariances Americas.
-
-**Gabriel MOREIRA**
-**João Pedro LAGUE**
-**Arthur ENDLEIN**
-**Roberto ROLO**
-**Danyel USERO**
-**Gustavo SCHOLZE**
+---
